@@ -24,6 +24,8 @@ public class Main {
         writeToConsole(dataSheet);
         writeToFile(dataSheet);
         outFile.fileClose();
+        places.fileClose();
+        stuff.fileClose();
 
     }
 
@@ -150,6 +152,7 @@ public class Main {
                     int index = getIndex(dataSheet, stuffList.get(i)[0], 0);
                     int newValue = (Integer.parseInt(dataSheet.get(index)[2]))+1;
                     dataSheet.get(index)[2] = Integer.toString(newValue);
+                    addedPairs.add(key);
                 }
 
             }
@@ -162,8 +165,10 @@ public class Main {
      * @param dataSheet arraylist to write to console
      */
     public static void writeToConsole(ArrayList<String[]> dataSheet){
+        System.out.format("%-20s %6s %7s \n", "Country", "Cities", "Stuff");
+        System.out.format("%-20s %6s %7s \n", "=======", "======", "=====");
         for (String[] splitLine : dataSheet) {
-            System.out.println(splitLine[0] + " " + splitLine[1] + " " + splitLine[2]);
+            System.out.format("%-20s %6s %7s \n", splitLine[0], splitLine[1], splitLine[2]);
         }
     }
 
